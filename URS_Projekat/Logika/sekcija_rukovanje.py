@@ -2,8 +2,7 @@ from Entiteti.sekcija import Sekcija
 from Logika.entiteti_rukovanje import EntitetiRukovanje
 
 class Sekcija_rukovanje(EntitetiRukovanje):
-    """Klasa za rukovanje sekcijama"""
-
+    """Klasa za rukovanje policama prosledjujemo putanju do fajla"""
     def __init__(self, putanja):
         super().__init__(putanja)
 
@@ -26,7 +25,7 @@ class Sekcija_rukovanje(EntitetiRukovanje):
             file.write(str(entitet))
 
     def izmjena_jednog(self, entitet):
-        """Izmjeni entitet sa podacima novog entiteta"""
+        """Izmijeni entitet sa podacima novog entiteta"""
         entiteti = self.citanje_svih()
         pronasao = False
         for i in range(len(entiteti)):

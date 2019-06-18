@@ -3,7 +3,7 @@ from Entiteti.polica import Polica
 
 
 class Polica_rukovanje(EntitetiRukovanje):
-    """Klasa za rukovanje policama"""
+    """Klasa za rukovanje policama prosledjujemo putanju do fajla"""
     def __init__(self,putanja):
         super().__init__(putanja)
 
@@ -26,7 +26,7 @@ class Polica_rukovanje(EntitetiRukovanje):
             file.write(str(entitet))
 
     def izmjena_jednog(self, entitet):
-        """Izmjeni entitet sa podacima novog entiteta"""
+        """Izmijeni entitet sa podacima novog entiteta"""
         entiteti = self.citanje_svih()
         pronasao = False
         for i in range(len(entiteti)):
@@ -99,7 +99,7 @@ class Polica_rukovanje(EntitetiRukovanje):
         return pretrazeno
 
     def sortiranje_po_poziciji(self, lst, smjer):
-        """Pretraga entiteta po poziciji"""
+        """"Sortiranje entiteta po poziciji, prosledjujemo listu za sortiranje i smjer"""
         for i in range(len(lst)-1):
             najmanji = i
             for j in range(i+1, len(lst)):
