@@ -88,3 +88,26 @@ class Polica_rukovanje(EntitetiRukovanje):
             if float(i.visina) == broj:
                 pretrazeno.append(i)
         return pretrazeno
+    
+    def sortiranje_po_poziciji(self, lst, smjer):
+        for i in range(len(lst)-1):
+            najmanji = i
+            for j in range(i+1, len(lst)):
+                if smjer == "+":
+                    if lst[najmanji].pozicija > lst[j].pozicija:
+                        najmanji = j
+                elif smjer == "-":
+                    if lst[najmanji].pozicija < lst[j].pozicija:
+                        najmanji = j
+                skladiste = lst[i]
+                lst[i] = lst[najmanji]        
+                lst[najmanji] = skladiste
+        return lst
+
+
+    def izlistaj_artikle(self, polica, lista_artikala):
+        artikli_na_polici = []
+        for i in lista_artikala:
+            if i.polica == polica:
+                artikli_na_polici.append(i)
+        return artikli_na_polici
