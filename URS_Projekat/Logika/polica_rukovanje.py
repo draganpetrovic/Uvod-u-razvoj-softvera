@@ -3,26 +3,30 @@ from Entiteti.polica import Polica
 
 
 class Polica_rukovanje(EntitetiRukovanje):
+    """Klasa za rukovanje policama"""
     def __init__(self,putanja):
         super().__init__(putanja)
 
     def citanje_svih(self):
+        """Citanje svih entiteta iz fajla"""
         with open(self.putanja, "r") as file:
             podaci = []
             for linija in file.readlines():
                 podaci.append(self.napravi_entitet(linija))
             return podaci
-                
             
     def napravi_entitet(self, linija):
+        "Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije"
         polje = linija.strip().split(";")
         return Polica(polje[0], polje[1], polje[2], polje[3], polje[4], polje [5], polje[6], polje[7])
 
     def upis_jednog(self, entitet):
+        """Metoda za upis novog entiteta"""
         with open(self.putanja, "a") as file:
             file.write(str(entitet))
 
     def izmjena_jednog(self, entitet):
+        """Izmjeni entitet sa podacima novog entiteta"""
         entiteti = self.citanje_svih()
         pronasao = False
         for i in range(len(entiteti)):
@@ -39,6 +43,7 @@ class Polica_rukovanje(EntitetiRukovanje):
             return pronasao
 
     def pretraga_po_oznaci(self, lst, rijec):
+        """Pretraga entiteta po oznaci"""
         pretrazeno = []
         for i in lst:
             if i.oznaka.lower().find(rijec.lower()) != -1:
@@ -46,12 +51,14 @@ class Polica_rukovanje(EntitetiRukovanje):
         return pretrazeno
 
     def pretraga_po_redu(self, lst, broj):
+        """Pretraga entiteta po redu"""
         pretrazeno = []
         for i in lst:
             if i.red == broj:
                 pretrazeno.append(i)
         return pretrazeno
     def pretraga_po_koloni(self, lst, broj):
+        """Pretraga entiteta po koloni"""
         pretrazeno = []
         for i in lst:
             if i.kolona == broj:
@@ -59,6 +66,7 @@ class Polica_rukovanje(EntitetiRukovanje):
         return pretrazeno
 
     def pretraga_po_poziciji(self, lst, rijec):
+        """Pretraga entiteta po poziciji"""
         pretrazeno = []
         for i in lst:
             if i.pozicija.lower().find(rijec.lower()) != -1:
@@ -66,6 +74,7 @@ class Polica_rukovanje(EntitetiRukovanje):
         return pretrazeno
     
     def pretraga_po_duzini(self, lst, broj):
+        """Pretraga entiteta po duzini"""
         pretrazeno = []
         for i in lst:
             if float(i.duzina) == broj:
@@ -73,6 +82,7 @@ class Polica_rukovanje(EntitetiRukovanje):
         return pretrazeno
 
     def pretraga_po_sirini(self,lst, broj):
+        """Pretraga entiteta po sirini"""
         pretrazeno = []
         for i in lst:
             if float(i.sirina) == broj:
@@ -81,13 +91,15 @@ class Polica_rukovanje(EntitetiRukovanje):
 
     
     def pretraga_po_visini(self, lst, broj):
+        """Pretraga entiteta po visini"""
         pretrazeno = []
         for i in lst:
             if float(i.visina) == broj:
                 pretrazeno.append(i)
         return pretrazeno
-    
+
     def sortiranje_po_poziciji(self, lst, smjer):
+        """Pretraga entiteta po poziciji"""
         for i in range(len(lst)-1):
             najmanji = i
             for j in range(i+1, len(lst)):
@@ -104,6 +116,7 @@ class Polica_rukovanje(EntitetiRukovanje):
 
 
     def izlistaj_artikle(self, polica, lista_artikala):
+        """Prikazivanje svih artikala na odredjenoj polici"""
         artikli_na_polici = []
         for i in lista_artikala:
             if i.polica == polica:
