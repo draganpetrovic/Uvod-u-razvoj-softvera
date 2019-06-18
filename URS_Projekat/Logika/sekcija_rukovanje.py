@@ -65,3 +65,26 @@ class Sekcija_rukovanje(EntitetiRukovanje):
             if  i.pozicija.lower().find(rijec.lower()) != -1:
                 pretrazeno.append(i)
         return pretrazeno
+
+    def izlistaj_police(self, sekcija, lista_polica):
+        police_sa_sekcijama = []
+        for i in lista_polica:
+            if i.sekcija == sekcija:
+                police_sa_sekcijama.append(i)
+        return police_sa_sekcijama
+
+    def izlistaj_artikle(self, polica, lista_artikala):
+        artikli_na_polici = []
+        for i in lista_artikala:
+            if i.polica == polica:
+                artikli_na_polici.append(i)
+        return artikli_na_polici
+
+    def izlistaj_police_i_artikle(self, sekcija, lista_polica, lista_artikala):
+        police_i_artikli = []
+        for i in lista_polica:
+            if i.sekcija == sekcija:
+                for j in lista_artikala:
+                    if i.artikal == j.oznaka:
+                        police_i_artikli.append({'polica' : i, 'artikal' : j})
+        return police_i_artikli
