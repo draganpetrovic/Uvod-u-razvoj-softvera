@@ -78,3 +78,39 @@ class Artikal_rukovanje(EntitetiRukovanje):
             if i.rok_trajanja == datum:
                 pretrazeno.append(i)
         return pretrazeno
+
+    def sortiranje_po_cijeni(self, lst, smjer):
+        for i in range(len(lst)-1):
+            najmanji = i
+            for j in range(i+1, len(lst)):
+                if smjer == "+":
+                    if lst[najmanji].cijena > lst[j].cijena:
+                        najmanji = j
+                elif smjer == "-":
+                    if lst[najmanji].cijena < lst[j].cijena:
+                        najmanji = j
+            skladiste = lst[i]
+            lst[i] = lst[najmanji]
+            lst[najmanji] = skladiste
+        return lst
+
+    def sortiranje_po_roku_trajanja(self, lst, smjer):
+        for i in range(len(lst)-1):
+            najmanji = i
+            for j in range(i+1, len(lst)):
+                if smjer == "+":
+                    if self.konvertuj_datum(lst[najmanji].rok_trajanja) > self.konvertuj_datum(lst[j].rok_trajanja):
+                        najmanji = j
+                elif smjer == "-":
+                    if self.konvertuj_datum(lst[najmanji].rok_trajanja) < self.konvertuj_datum(lst[j].rok_trajanja):
+                        najmanji = j
+            skladiste = lst[i]
+            lst[i] = lst[najmanji]
+            lst[najmanji] = skladiste
+        return lst
+
+
+    def konvertuj_datum(self, datum):
+        brojevi = datum.split(".")
+        konvertovani = date(int(brojevi[2]), int(brojevi[1]), int(brojevi[0]))
+        return konvertovani
