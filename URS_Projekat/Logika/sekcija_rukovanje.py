@@ -25,7 +25,7 @@ class Sekcija_rukovanje(EntitetiRukovanje):
             file.write(str(entitet))
 
     def izmjena_jednog(self, entitet):
-        """Izmijeni entitet sa podacima novog entiteta"""
+        """Metoda za izmjenu odredjenog entiteta sa podacima novog entiteta"""
         entiteti = self.citanje_svih()
         pronasao = False
         for i in range(len(entiteti)):
