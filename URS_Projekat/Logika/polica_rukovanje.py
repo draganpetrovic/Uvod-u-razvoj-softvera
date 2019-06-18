@@ -77,8 +77,6 @@ class Polica_rukovanje(EntitetiRukovanje):
         for i in lst:
             if float(i.sirina) == broj:
                 pretrazeno.append(i)
-            # else:
-            #     return "Nema police sa tim podacima."
         return pretrazeno
 
     
