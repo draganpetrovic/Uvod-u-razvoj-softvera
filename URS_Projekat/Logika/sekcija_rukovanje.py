@@ -20,3 +20,48 @@ class Sekcija_rukovanje(EntitetiRukovanje):
     def upis_jednog(self, entitet):
         with open(self.putanja, "a") as file:
             file.write(str(entitet))
+    
+    def izmjena_jednog(self, entitet):
+        entiteti = self.citanje_svih()
+        pronasao = False
+        for i in range(len(entiteti)):
+            if entiteti[i].oznaka == entitet.oznaka:
+                entiteti.pop(i)
+                if i >= len(entiteti):
+                    entiteti.append(entitet)
+                else:
+                    entiteti.insert(i, entitet)
+                pronasao = True
+                break
+        with open(self.putanja, "w") as file:
+            for entitet in entiteti:
+                file.write(str(entitet))
+            return pronasao
+        
+    def pretraga_po_oznaci(self, lst, rijec):
+        pretrazeno = []
+        for i in lst:
+            if i.oznaka.lower().find(rijec.lower()) != -1:
+                pretrazeno.append(i)
+        return pretrazeno
+
+    def pretraga_po_nazivu(self, lst, rijec):
+        pretrazeno = []
+        for i in lst:
+            if i.naziv.lower().find(rijec.lower()) != -1:
+                pretrazeno.append(i)
+        return pretrazeno
+
+    def pretraga_po_opisu(self, lst, rijec):
+        pretrazeno = []    
+        for i in lst:
+            if i.opis.lower().find(rijec.lower()) != -1:
+                pretrazeno.append(i)
+        return pretrazeno
+    
+    def pretraga_po_poziciji(self, lst, rijec):
+        pretrazeno = []
+        for i in lst:
+            if  i.pozicija.lower().find(rijec.lower()) != -1:
+                pretrazeno.append(i)
+        return pretrazeno
