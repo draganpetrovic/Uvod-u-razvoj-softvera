@@ -1,0 +1,4 @@
+1;prehrambeni proizvodi;prehrambeni proizvodi;A1
+2;higijenski proizvodi;higijenski proizvodi;A2
+3;sinteticki proizvodi;sinteticki proizvodi;A3
+4;proizvodi za ciscenje;proizvodi za ciscenje;A4;

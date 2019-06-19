@@ -34,13 +34,13 @@ if __name__ == "__main__":
                 opt = int(input("Izaberite neku od opcija"))
 
                 if opt == 1:
-                    police = Polica_rukovanje("police.txt")
+                    police = Polica_rukovanje("Upisi/police.txt")
                     lista_polica = police.citanje_svih()
                     for i in lista_polica:
                         print(i)
 
                 elif opt == 2:
-                    p = Polica_rukovanje("police.txt")
+                    p = Polica_rukovanje("Upisi/police.txt")
                     oznaka = input("Unesite oznaku: ")
                     oznaka = str(oznaka)
                     red = int(input("Unesite red: "))
@@ -65,7 +65,7 @@ if __name__ == "__main__":
                     p.upis_jednog(polica)
 
                 elif opt == 3:
-                    p = Polica_rukovanje("police.txt")
+                    p = Polica_rukovanje("Upisi/police.txt")
                     oznaka = input("Unesite oznaku police koji zelite da zamjenite: ")
                     oznaka = str(oznaka)
                     red = input("Unesite red nove police: ")
@@ -98,49 +98,49 @@ if __name__ == "__main__":
                     opt_pretraga = int(input("Unesite pretragu: "))
             
                     if opt_pretraga == 1:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         oznaka_za_pretragu = input("Unesite oznaku police za pretragu: ")
                         pretrazeno = p.pretraga_po_oznaci(lista_polica, oznaka_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 2:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         red_za_pretragu = input("Unesite red police za pretragu: ")
                         pretrazeno = p.pretraga_po_redu(lista_polica, red_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 3:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         kolona_za_pretragu = input("Unesite kolonu police za pretragu: ")
                         pretrazeno = p.pretraga_po_koloni(lista_polica, kolona_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 4:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         pozicija_za_pretragu = input("Unesite pziciju police za pretragu: ")
                         pretrazeno = p.pretraga_po_poziciji(lista_polica, pozicija_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 5:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         duzina_za_pretragu = float(input("Unesite duzinu police za pretragu: "))
                         pretrazeno = p.pretraga_po_duzini(lista_polica, duzina_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 6:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         sirina_za_pretragu = float(input("Unesite sirinu police za pretragu: "))
                         pretrazeno = p.pretraga_po_sirini(lista_polica, sirina_za_pretragu)
                         for i in pretrazeno:
                             print(i)
                     elif opt_pretraga == 7:
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         visina_za_pretragu = float(input("Unesite visinu police za pretragu: "))
                         pretrazeno = p.pretraga_po_visini(lista_polica, visina_za_pretragu)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
                         opt_sortiranje = int(input("Izaberite jednu od opcija za sortiranje: "))
                     
                         if opt_sortiranje == 1:
-                            p = Polica_rukovanje("police.txt")
+                            p = Polica_rukovanje("Upisi/police.txt")
                             lista_polica = p.citanje_svih()
                             smjer = input("Napisite '+' za opadajuci redoslijed, '-' za rastuci redoslijed: ")
                             sortirano = p.sortiranje_po_poziciji(lista_polica, smjer)
@@ -165,9 +165,9 @@ if __name__ == "__main__":
                 elif opt == 6:
                     print("Prikazi artikle na polici")
                 
-                    a = Artikal_rukovanje("artikli.txt")
+                    a = Artikal_rukovanje("Upisi/artikli.txt")
                     lista_artikala = a.citanje_svih()
-                    p = Polica_rukovanje("police.txt")
+                    p = Polica_rukovanje("Upisi/police.txt")
                     lista_polica = p.citanje_svih()
                     for i in lista_polica:
                         print(i)
@@ -193,13 +193,13 @@ if __name__ == "__main__":
                 opt = int(input("Izaberi neku od opcija"))
 
                 if opt == 1:
-                    s = Sekcija_rukovanje("sekcije.txt")
+                    s = Sekcija_rukovanje("Upisi/sekcije.txt")
                     lista_sekcija = s.citanje_svih()
                     for i in lista_sekcija:
                         print(i)
 
                 elif opt == 2:
-                    s = Sekcija_rukovanje("sekcije.txt")
+                    s = Sekcija_rukovanje("Upisi/sekcije.txt")
                     oznaka = str(input("Unesite oznaku sekcije koju mijenjate: "))
                     naziv = str(input("Unesite naziv sekcije"))
                     opis = str(input("Unesite opis sekcije"))
@@ -208,7 +208,7 @@ if __name__ == "__main__":
                     s.upis_jednog(sekcija)
                 
                 elif opt == 3:
-                    s = Sekcija_rukovanje("sekcije.txt")
+                    s = Sekcija_rukovanje("Upisi/sekcije.txt")
                     oznaka = input("Unesite oznaku sekcije koju zelite da zamjenite: ")
                     oznaka = str(oznaka)
                     naziv = input("Unesite naziv nove sekcije: ")
@@ -230,7 +230,7 @@ if __name__ == "__main__":
                     opt_pretraga = int(input("Unesite pretragu: "))
 
                     if opt_pretraga == 1:
-                        s = Sekcija_rukovanje("sekcije.txt")
+                        s = Sekcija_rukovanje("Upisi/sekcije.txt")
                         lista_sekcija = s.citanje_svih()
                         oznaka_za_pretragu = input("Unesite oznaku sekcije za pretragu: ")
                         pretrazeno = s.pretraga_po_oznaci(lista_sekcija, oznaka_za_pretragu)
@@ -238,7 +238,7 @@ if __name__ == "__main__":
                             print(i)
                     
                     elif opt_pretraga == 2:
-                        s = Sekcija_rukovanje("sekcije.txt")
+                        s = Sekcija_rukovanje("Upisi/sekcije.txt")
                         lista_sekcija = s.citanje_svih()
                         naziv_za_pretragu = input("Unesite naziv sekcije za pretragu: ")
                         pretrazeno = s.pretraga_po_nazivu(lista_sekcija, naziv_za_pretragu)
@@ -246,7 +246,7 @@ if __name__ == "__main__":
                             print(i)
 
                     elif opt_pretraga == 3:
-                        s = Sekcija_rukovanje("sekcije.txt")
+                        s = Sekcija_rukovanje("Upisi/sekcije.txt")
                         lista_sekcija = s.citanje_svih()
                         opis_za_pretragu = input("Unesite opis sekcije za pretragu: ")
                         pretrazeno = s.pretraga_po_opisu(lista_sekcija, opis_za_pretragu)
@@ -254,7 +254,7 @@ if __name__ == "__main__":
                             print(i)
 
                     elif opt_pretraga == 4:
-                        s = Sekcija_rukovanje("sekcije.txt")
+                        s = Sekcija_rukovanje("Upisi/sekcije.txt")
                         lista_sekcija = s.citanje_svih()
                         pozicija_za_pretragu = input("Unesite poziciju sekcije za pretragu: ")
                         pretrazeno = s.pretraga_po_poziciji(lista_sekcija, pozicija_za_pretragu)
@@ -268,14 +268,14 @@ if __name__ == "__main__":
                     print("2 -> Izlistaj artikle na polici")
                     opt_izlistaj = int(input("Unesite zeljenu opciju: "))
 
-                    s = Sekcija_rukovanje("sekcije.txt")
+                    s = Sekcija_rukovanje("Upisi/sekcije.txt")
 
                     if opt_izlistaj == 1:
                         
-                        s = Sekcija_rukovanje("sekcije.txt")
+                        s = Sekcija_rukovanje("Upisi/sekcije.txt")
                         lista_sekcija = s.citanje_svih()
 
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
 
                         for l in lista_sekcija:
@@ -288,10 +288,10 @@ if __name__ == "__main__":
                     
                     elif opt_izlistaj == 2:
                         
-                        p = Polica_rukovanje("police.txt")
+                        p = Polica_rukovanje("Upisi/police.txt")
                         lista_polica = p.citanje_svih()
                         
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_aritkala = a.citanje_svih()
 
                         for l in lista_polica:
@@ -322,14 +322,14 @@ if __name__ == "__main__":
 
                 if opt == 1:
                     print("Meni ucitaj artikle")
-                    artikli = Artikal_rukovanje("artikli.txt")
+                    artikli = Artikal_rukovanje("Upisi/artikli.txt")
                     lista_artikala = artikli.citanje_svih()
                     for l in lista_artikala:
                         print(l)
 
                 elif opt == 2:
                     print("Meni Dodaj Artikal")
-                    a = Artikal_rukovanje("artikli.txt")
+                    a = Artikal_rukovanje("Upisi/artikli.txt")
                     oznaka = str(input("Unesite oznaku artikla: "))
                     naziv =  str(input("unesite naziv artikla: "))
                     opis  = str(input("Unesite opis artikla: "))
@@ -342,7 +342,7 @@ if __name__ == "__main__":
                     a.upis_jednog(artikal)
 
                 elif opt == 3:
-                    a = Artikal_rukovanje("artikli.txt")
+                    a = Artikal_rukovanje("Upisi/artikli.txt")
                     oznaka = input("Unesite oznaku artikla koji zelite da izmjenite: ")
                     oznaka = str(oznaka)
                     naziv =  input("unesite naziv novog artikla: ")
@@ -369,7 +369,7 @@ if __name__ == "__main__":
                     opt_pretraga = int(input("Unesite pretragu: "))
 
                     if opt_pretraga == 1:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         oznaka_za_pretragu = input("Unesite oznaku artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_oznaci(lista_artikala, oznaka_za_pretragu)
@@ -377,7 +377,7 @@ if __name__ == "__main__":
                             print(i)
                     
                     if opt_pretraga == 1:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         oznaka_za_pretragu = input("Unesite oznaku artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_oznaci(lista_artikala, oznaka_za_pretragu)
@@ -385,7 +385,7 @@ if __name__ == "__main__":
                             print(i)
 
                     elif opt_pretraga == 2:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         naziv_za_pretragu = input("Unesite naziv artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_nazivu(lista_artikala, naziv_za_pretragu)
@@ -393,7 +393,7 @@ if __name__ == "__main__":
                             print(i)
                             
                     elif opt_pretraga == 3:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         opis_za_pretragu = input("Unesite opis artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_opisu(lista_artikala, opis_za_pretragu)
@@ -401,7 +401,7 @@ if __name__ == "__main__":
                             print(i)
 
                     elif opt_pretraga == 4:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         cijena_za_pretragu = input("Unesite cijenu artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_cijeni(lista_artikala, cijena_za_pretragu)
@@ -409,7 +409,7 @@ if __name__ == "__main__":
                             print(i)
                     
                     elif opt_pretraga == 5:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
                         rok_trajanja_za_pretragu = input("Unesite rok trajanja artikla za pretragu: ")
                         pretrazeno = a.pretraga_po_roku_trajanja(lista_artikala, rok_trajanja_za_pretragu)
@@ -424,14 +424,14 @@ if __name__ == "__main__":
                     opt_sortiranje = int(input("Izaberite jednu od opcija za sortiranje: "))
 
                     if opt_sortiranje == 1:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala = a.citanje_svih()
                         smjer = input("Napisite '+' za opadajuci redoslijed, '-' za rastuci redoslijed: ")
                         sortirano = a.sortiranje_po_cijeni(lista_artikala, "+")
                         for i in sortirano:
                             print(i)
                     elif opt_sortiranje == 2:
-                        a = Artikal_rukovanje("artikli.txt")
+                        a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala = a.citanje_svih()
                         smjer = input("Napisite '+' za opadajuci redoslijed, '-' za rastuci redoslijed: ")
                         sortirano = a.sortiranje_po_roku_trajanja(lista_artikala, "+")
