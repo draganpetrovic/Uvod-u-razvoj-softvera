@@ -1,10 +1,14 @@
-from Logika.entiteti_rukovanje import EntitetiRukovanje
 from Entiteti.artikal import Artikal
 from Logika.artikal_rukovanje import Artikal_rukovanje
 from Entiteti.polica import Polica
 from Logika.polica_rukovanje import Polica_rukovanje
 from Entiteti.sekcija import Sekcija
 from Logika.sekcija_rukovanje import Sekcija_rukovanje
+from Logika.racun_rukovanje import Racun_rukovanje
+from Logika.stavka_rukovanje import Stavka_rukovanje
+from Entiteti.racun import Racun
+from Entiteti.stavka import Stavka
+
 
 if __name__ == "__main__":
     print("*************** EVIDENCIJA ARTIKALA I RACUNA ZA PRODAVCE ***************\n\n")
@@ -307,7 +311,7 @@ if __name__ == "__main__":
 
 
                 while opt < 1 or opt > 6:
-                  opt = int(input("Izaberite neku od postojecih opcija"))
+                    opt = int(input("Izaberite neku od postojecih opcija"))
         elif opcija == 3:
             print("Rad sa artiklima")
             opt = 0
@@ -440,3 +444,261 @@ if __name__ == "__main__":
 
                 while opt < 1 or opt > 6:
                     opt = int(input("Izaberite neku od postojecih opcija"))
+                    
+                    
+                    
+                    
+        elif opcija == 4:
+            print("")
+            opt = 0
+            while opt != 6:
+                print("1 -> Prikaz stavki")
+                print("2 -> Dodavanje stavki")
+                print("3 -> Izmena stavki")
+                print("4 -> Pretraga stavki")
+                print("5 -> Sortiranje stvaki")
+                print("6 -> Nazad")
+                print("")
+                opt = int(input("Izaberi neku od opcija"))
+        
+                if opt == 1:
+                    s = Stavka_rukovanje("Upisi/stavke.txt")
+                    lista_stavki = s.citanje_svih()
+                    for i in lista_stavki:
+                        print(i)
+                        print("")
+                
+                elif opt == 2:
+                    s = Stavka_rukovanje("Upisi/stavke.txt")
+                    oznaka = str(input("Unesite oznaku: "))
+                    kolicina = float(input("Unesite kolicinu: "))
+                    if kolicina <= 0:
+                        raise Exception
+                    ukupna_cijena = float(input("Unesite ukupnu cenu: "))
+                    if ukupna_cijena <= 0:
+                        raise Exception
+                    artikal = str(input("Unesite artikal: "))
+                    racun = str(input("Unesite racun: "))
+                    stavka = Stavka(oznaka, kolicina, ukupna_cijena, artikal, racun)
+                    s.upis_jednog(stavka)
+
+                elif opt == 3:
+                    s = Stavka_rukovanje("Upisi/stavke.txt")
+                    oznaka = str(input("Unesite oznaku stavke koju zelite da zamjenite: "))
+                    kolicina = float(input("Unesite kolicinu nove stavke: "))
+                    ukupna_cijena = float(input("Unesite ukupnu cenu nove stavke: "))
+                    artikal = str(input("Unesite novi artikal: "))
+                    racun = str(input("Unesite novi racun: "))
+                    stavka = Stavka(oznaka, kolicina, ukupna_cijena, artikal, racun)
+                    s.izmjena_jednog(stavka)
+
+                elif opt == 4:
+                    print("Meni pretrage")
+                    print("")
+                    opt_pretraga = 0
+                    print("1 -> Pretraga po oznaci")
+                    print("2 -> Pretraga po kolicini")
+                    print("3 -> Pretraga po ukupnoj ceni")
+                    print("")
+                    opt_pretraga = int(input("Unesite pretragu: "))
+                    print("")
+
+                    if opt_pretraga == 1:
+                        s = Stavka_rukovanje("Upisi/stavke.txt")
+                        lista_stavki= s.citanje_svih()
+                        oznaka_za_pretragu = input("Unesite oznaku stavke za pretragu: ")
+                        print("")
+                        pretrazeno = s.pretraga_po_oznaci(lista_stavki, oznaka_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                    elif opt_pretraga == 2:
+                        s = Stavka_rukovanje("Upisi/stavke.txt")
+                        lista_stavki= s.citanje_svih()
+                        kolicina_za_pretragu = input("Unesite kolicinu stavke za pretragu: ")
+                        print("")
+                        pretrazeno = s.pretraga_po_kolicini(lista_stavki, kolicina_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                    elif opt_pretraga == 3:
+                        s = Stavka_rukovanje("Upisi/stavke.txt")
+                        lista_stavki= s.citanje_svih()
+                        ukupna_cijena_za_pretragu = input("Unesite ukupnu cenu stavke za pretragu: ")
+                        print("")
+                        pretrazeno = s.pretraga_po_ukupnoj_cijeni(lista_stavki, ukupna_cijena_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                    
+
+                elif opt == 5: 
+                    print("Soritranje po kolicini")
+                    print("")
+                    s = Stavka_rukovanje("Upisi/stavke.txt")
+                    lista_stavki = s.citanje_svih()
+                    smjer = input("Unesite '+' za opadajuci redosled, '-' za rastuci redosled: ")
+                    print("")
+                    sortirano = s.sortiranje_po_kolicini(lista_stavki, smjer)
+                    for i in sortirano:
+                        print(i)
+                        
+                        
+                        
+                
+
+        elif opcija == 5:
+            print("")
+            opt = 0
+            while opt != 7:
+                print("1 -> Prikaz racuna")
+                print("2 -> Dodavanje racuna")
+                print("3 -> Izmena racuna")
+                print("4 -> Pretraga Racuna")
+                print("5 -> Sortiranje racuna")
+                print("6 -> Prikazi stavke i artikle na racunu")
+                print("7 -> Nazad")
+                print("")
+                opt = int(input("Izaberi neku od opcija"))
+                print("")
+
+                if opt == 1:
+                    r = Racun_rukovanje("Upisi/racuni.txt")
+                    lista_racuna = r.citanje_svih()
+                    for l in lista_racuna:
+                        print(l)
+                        print("")
+                
+                elif opt == 2:
+                    r = Racun_rukovanje("Upisi/racuni.txt")
+                    oznaka = str(input("Unesite oznaku: "))
+                    prodavac = str(input("Unesite prodavca: "))
+                    ukupna_cijena = float(input("Unesite ukupnu cenu: "))
+                    if ukupna_cijena <= 0:
+                        raise Exception
+                    datum = str(input("Unesite datum: "))
+                    racun = Racun(oznaka, prodavac, ukupna_cijena, datum)
+                    r.upis_jednog(racun)
+
+                elif opt == 3:
+                    r = Racun_rukovanje("Upisi/racuni.txt")
+                    oznaka = input("Unesite oznaku racuna koji zelite da zamenite: ")
+                    oznaka = str(oznaka)
+                    prodavac = input("Unesite prodavca novog racuna: ")
+                    prodavac = str(prodavac)
+                    ukupna_cijena = input("Unesite ukupnu cenu novog racuna: ")
+                    ukupna_cijena = float(ukupna_cijena)
+                    datum = input("Unesite datum novog racuna: ")
+                    datum = str(datum)
+                    racun = Racun(oznaka, prodavac, ukupna_cijena, datum)
+                    r.izmjena_jednog(racun)
+                
+                elif opt == 4:
+                    print("")
+                    opt_pretraga = 0
+                    print("1 -> Pretraga po oznaci")
+                    print("2 -> Pretraga po prodavcu")
+                    print("3 -> Pretraga po ukupnoj ceni")
+                    print("4 -> Pretraga po datumu")
+                    print("")
+                    opt_pretraga = int(input("Unesite pretragu: "))
+                    print("")
+
+                    if opt_pretraga == 1:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna= r.citanje_svih()
+                        oznaka_za_pretragu = input("Unesite oznaku racuna za pretragu: ")
+                        print("")
+                        pretrazeno = r.pretraga_po_oznaci(lista_racuna, oznaka_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                            
+                    elif opt_pretraga == 2:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna= r.citanje_svih()
+                        prodavac_za_pretragu = input("Unesite prodavca racuna za pretragu: ")
+                        print("")
+                        pretrazeno = r.pretraga_po_prodavcu(lista_racuna, prodavac_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                            
+                    elif opt_pretraga == 3:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna= r.citanje_svih()
+                        ukupna_cijena_za_pretragu = input("Unesite ukupnu cenu racuna za pretragu: ")
+                        print("")
+                        pretrazeno = r.pretraga_po_ukupnoj_cijeni(lista_racuna, ukupna_cijena_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                            
+                    elif opt_pretraga == 4:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna= r.citanje_svih()
+                        datum_za_pretragu = input("Unesite datum racuna za pretragu: ")
+                        print("")
+                        pretrazeno = r.pretraga_po_datumu(lista_racuna, datum_za_pretragu)
+                        for i in pretrazeno:
+                            print(i)
+                            print("")
+                    
+                elif opt == 5:
+                    print("")
+                    opt_soritranje = 0
+                    print("1 -> Soritranje po ukupnoj ceni")
+                    print("2 -> Sortiranje po datumu")
+                    print("")
+                    opt_sortiranje = int(input("Izaberite jednu od opcija za sortiranje: "))
+                    print("")
+
+                    if opt_sortiranje == 1:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna = r.citanje_svih()
+                        smjer = input("Unesite '+' za opadajuci redosled, '-' za rastuci redosled: ")
+                        print("")
+                        sortirano = r.sortiranje_po_ukupnoj_cijeni(lista_racuna, smjer)
+                        for i in sortirano:
+                            print(i)
+
+                    if opt_sortiranje == 2:
+                        r = Racun_rukovanje("Upisi/racuni.txt")
+                        lista_racuna = r.citanje_svih()
+                        smjer = input("Unesite '+' za opadajuci redosled, '-' za rastuci redosled: ")
+                        print("")
+                        sortirano = r.sortiranje_po_datumu(lista_racuna, smjer)
+                        for i in sortirano:
+                            print(i)
+                            
+                
+                elif opt == 6:
+                    print("Izlistaj stavke i artikle")
+                    print("")
+                    
+                    r = Racun_rukovanje("Upisi/racuni.txt")
+                    lista_racuna = r.citanje_svih()
+
+                    a = Artikal_rukovanje("Upisi/artikli.txt")
+                    lista_aritkala = a.citanje_svih()
+                    
+                    st = Stavka_rukovanje("Upisi/stavke.txt")
+                    lista_stavki = st.citanje_svih()
+                    
+                    for i in lista_racuna:
+                        print(i)
+                        print("")
+                    id_racuna = input("Unesite ID racuna: ")
+                    print("")
+                    stavke_i_artikli = r.stavke_i_artikli_u_racunu(id_racuna, lista_stavki, lista_aritkala)
+                    for i in stavke_i_artikli:
+                        print("stavka" + str(i["stavka"]) + ", artikal" + str(i["artikal"]))
+                        print("")
+
+
+
+                while opt < 1 or opt > 7:
+                    opt = int(input("Pogresan unos, pokusajte ponovo."))
+                    print("")
+                    
+    print("Dovidjenja!")

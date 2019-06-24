@@ -18,7 +18,7 @@ class Artikal_rukovanje(EntitetiRukovanje):
             return podaci
 
     def napravi_entitet(self,linija):
-        "Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije"
+        '''Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije'''
         polje = linija.strip().split(";")
         return Artikal(polje[0], polje[1], polje[2], polje[3], polje[4], polje[5])
 
@@ -27,7 +27,7 @@ class Artikal_rukovanje(EntitetiRukovanje):
     def upis_jednog(self,entitet):
         """Metoda za upis novog entiteta"""
         with open(self.putanja, "a") as file:
-           file.write(str(entitet))
+            file.write(str(entitet))
 
 
     def izmjena_jednog(self, entitet):
