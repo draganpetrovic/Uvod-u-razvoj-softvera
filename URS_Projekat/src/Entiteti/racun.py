@@ -1,6 +1,8 @@
 from Entiteti.identifikacija import Identifikacija
 
 class Racun(Identifikacija):
+    
+    """ Nasledjuje klasu Identifikacija"""
 
     def __init__(self, oznaka, prodavac, ukupna_cijena, datum):
         super().__init__(oznaka)

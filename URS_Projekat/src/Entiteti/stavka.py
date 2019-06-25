@@ -2,7 +2,12 @@ from Entiteti.identifikacija import Identifikacija
 
 class Stavka(Identifikacija):
     
+    ''' Nasledjuje klasu Identifikacija '''
+    
     def __init__(self, oznaka, kolicina, ukupna_cijena, artikal, racun):
+        
+        ''' Odnos prema artiklima i racunima je 0:* (nula prema vise)'''
+        
         super().__init__(oznaka)
         self.kolicina = float(kolicina)
         self.ukupna_cijena = float(ukupna_cijena)

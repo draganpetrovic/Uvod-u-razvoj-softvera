@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Logika.stavka_rukovanje &#8212; Dokumentacija za projekat iz predmeta URS 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dokumentacija za projekat iz predmeta URS 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for Logika.stavka_rukovanje</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">Entiteti.stavka</span> <span class="k">import</span> <span class="n">Stavka</span>
+<span class="kn">from</span> <span class="nn">Logika.entiteti_rukovanje</span> <span class="k">import</span> <span class="n">EntitetiRukovanje</span>
+
+<div class="viewcode-block" id="Stavka_rukovanje"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje">[docs]</a><span class="k">class</span> <span class="nc">Stavka_rukovanje</span><span class="p">(</span><span class="n">EntitetiRukovanje</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot; Klasa Stavka_rukovanje sadrzi sve metode vezane za objekte Stavka.&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">putanja</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">putanja</span><span class="p">)</span>
+    
+
+<div class="viewcode-block" id="Stavka_rukovanje.citanje_svih"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.citanje_svih">[docs]</a>    <span class="k">def</span> <span class="nf">citanje_svih</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;Vrsi se citanje stavki iz fajla stavke.txt</span>
+<span class="sd">        podaci=[] skladisti objekte u listu&quot;&quot;&quot;</span>
+                
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">podaci</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">linija</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="n">podaci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">napravi_entitet</span><span class="p">(</span><span class="n">linija</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">podaci</span></div>
+                
+
+<div class="viewcode-block" id="Stavka_rukovanje.napravi_entitet"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.napravi_entitet">[docs]</a>    <span class="k">def</span> <span class="nf">napravi_entitet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linija</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije&#39;&#39;&#39;</span>
+        
+        <span class="n">polje</span> <span class="o">=</span> <span class="n">linija</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Stavka</span><span class="p">(</span><span class="n">polje</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Stavka_rukovanje.upis_jednog"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.upis_jednog">[docs]</a>    <span class="k">def</span> <span class="nf">upis_jednog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entitet</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot; Dodavanje novog entiteta u fajl stavka.txt.&quot;&quot;&quot;</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">entitet</span><span class="p">))</span></div>
+    
+<div class="viewcode-block" id="Stavka_rukovanje.izmjena_jednog"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.izmjena_jednog">[docs]</a>    <span class="k">def</span> <span class="nf">izmjena_jednog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entitet</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;Metoda za izmenu odredjenog entiteta .</span>
+<span class="sd">        Unos novih podataka&quot;&quot;&quot;</span>
+        
+        <span class="n">entiteti</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">citanje_svih</span><span class="p">()</span>
+        <span class="n">pronasao</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">entiteti</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">entiteti</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">oznaka</span> <span class="o">==</span> <span class="n">entitet</span><span class="o">.</span><span class="n">oznaka</span><span class="p">:</span>
+                <span class="n">entiteti</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">entiteti</span><span class="p">):</span>
+                    <span class="n">entiteti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entitet</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">entiteti</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">entitet</span><span class="p">)</span>
+                <span class="n">pronasao</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entitet</span> <span class="ow">in</span> <span class="n">entiteti</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">entitet</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">pronasao</span></div>
+    
+<div class="viewcode-block" id="Stavka_rukovanje.pretraga_po_oznaci"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.pretraga_po_oznaci">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_oznaci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">rijec</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot; Svaka stavka ima svoju oznaku, koja je jedinstvena i uvek</span>
+<span class="sd">        lako mozemo pronaci stavku po toj oznaci&quot;&quot;&quot;</span>
+        
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">oznaka</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">rijec</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+<div class="viewcode-block" id="Stavka_rukovanje.pretraga_po_kolicini"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.pretraga_po_kolicini">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_kolicini</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;Pretraga stavki po kolicini. Uporedjuju se kolicine</span>
+<span class="sd">        iz liste stavki sa unetom kolicinom za pretragu.&quot;&quot;&quot;</span>
+        
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">kolicina</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+    
+<div class="viewcode-block" id="Stavka_rukovanje.pretraga_po_ukupnoj_cijeni"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.pretraga_po_ukupnoj_cijeni">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_ukupnoj_cijeni</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot; Pretraga stavki po ceni. Dobijamo listu stavki i cenu </span>
+<span class="sd">        po kojoj trazimo stavku u listi.&quot;&quot;&quot;</span>
+        
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">ukupna_cijena</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+    
+<div class="viewcode-block" id="Stavka_rukovanje.kljuc"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.kljuc">[docs]</a>    <span class="k">def</span> <span class="nf">kljuc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Koristi se kao pomocna funkcija u metodi: sortiranje_po_kolicini;</span>
+<span class="sd">         kao &lt;key_function&gt; za sortiranje&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kolicina</span></div>
+    
+    
+<div class="viewcode-block" id="Stavka_rukovanje.sortiranje_po_kolicini"><a class="viewcode-back" href="../../fajlovi/stavka.html#Logika.stavka_rukovanje.Stavka_rukovanje.sortiranje_po_kolicini">[docs]</a>    <span class="k">def</span> <span class="nf">sortiranje_po_kolicini</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">smjer</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;Sortira stavki po kolicini.</span>
+<span class="sd">        Ponudjen izbor prilikom sortiranja, za rastuce ili opadajuce vrednosti.</span>
+<span class="sd">        Koristi kljuc() metodu kao key function za sortiranje i vraca sortiranu listu nazad </span>
+<span class="sd">        u metodu koja pozove ovu metodu. Kolicina atribut mora biti float vrednost da bi sort</span>
+<span class="sd">        mogao da je gleda kao broj, a ne kao string, kada gleda samo prvu cifru.&quot;&quot;&quot;</span>
+        
+        
+        <span class="k">if</span> <span class="n">smjer</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Stavka_rukovanje</span><span class="o">.</span><span class="n">kljuc</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">lst</span>
+        <span class="k">elif</span> <span class="n">smjer</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Stavka_rukovanje</span><span class="o">.</span><span class="n">kljuc</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">lst</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pogresan unos!&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dokumentacija za projekat iz predmeta URS 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Tim07.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
