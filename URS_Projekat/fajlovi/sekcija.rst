@@ -1,0 +1,25 @@
+Sekcija
+========
+
+**Objedinjena dokumentacija za klase:**
+
+* sekcija
+
+* sekcija_rukovanje
+
+Klasa Sekcija
+---------------
+
+.. automodule:: Entiteti.sekcija
+   :members:
+
+Klasa Sekcija_rukovanje
+------------------------
+
+.. automodule:: Logika.sekcija_rukovanje
+   :members:
+
+
+
+:doc:`index strana <../index>`
+
