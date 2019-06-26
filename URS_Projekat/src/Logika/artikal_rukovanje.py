@@ -89,6 +89,9 @@ class Artikal_rukovanje(EntitetiRukovanje):
                 pretrazeno.append(i)
         return pretrazeno
 
+    def kljuc(self):
+        return self.cijena
+
     def sortiranje_po_cijeni(self, lst, smjer):
         """Sortiranje entiteta po cijeni, prosledjujemo listu za sortiranje i smjer"""
         for i in range(len(lst)-1):
@@ -123,7 +126,7 @@ class Artikal_rukovanje(EntitetiRukovanje):
 
 
     def konvertuj_datum(self, datum):
-        """Metoda za konvertovanje datuma u format za sortiranje"""
+        """Metoda za konvertovanje datuma u format pogodan za sortiranje"""
         brojevi = datum.split(".")
         konvertovani = date(int(brojevi[2]), int(brojevi[1]), int(brojevi[0]))
         return konvertovani

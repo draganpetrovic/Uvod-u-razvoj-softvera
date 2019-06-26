@@ -7,7 +7,7 @@ class Artikal(Identifikacija):
         super().__init__(oznaka)
         self.naziv = naziv
         self.opis = opis
-        self.cijena = int(cijena)
+        self.cijena = float(cijena)
         self.rok_trajanja = rok_trajanja
         self.polica = polica
 

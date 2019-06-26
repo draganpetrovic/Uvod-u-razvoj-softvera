@@ -433,14 +433,14 @@ if __name__ == "__main__":
                         a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala = a.citanje_svih()
                         smjer = input("Napisite '+' za opadajuci redoslijed, '-' za rastuci redoslijed: ")
-                        sortirano = a.sortiranje_po_cijeni(lista_artikala, "+")
+                        sortirano = a.sortiranje_po_cijeni(lista_artikala, smjer)
                         for i in sortirano:
                             print(i)
                     elif opt_sortiranje == 2:
                         a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala = a.citanje_svih()
                         smjer = input("Napisite '+' za opadajuci redoslijed, '-' za rastuci redoslijed: ")
-                        sortirano = a.sortiranje_po_roku_trajanja(lista_artikala, "+")
+                        sortirano = a.sortiranje_po_roku_trajanja(lista_artikala, smjer)
                         for i in sortirano:
                             print(i)
 
