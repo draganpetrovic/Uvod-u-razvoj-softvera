@@ -9,6 +9,8 @@ from Logika.stavka_rukovanje import Stavka_rukovanje
 from Entiteti.racun import Racun
 from Entiteti.stavka import Stavka
 
+""" Main metoda sadrzi petlju koja nam daje meni prilikom pokretanja programa
+Omogucava rad sa entitetima i njihovim metodama."""
 
 if __name__ == "__main__":
     print("*************** EVIDENCIJA ARTIKALA I RACUNA ZA PRODAVCE ***************\n\n")

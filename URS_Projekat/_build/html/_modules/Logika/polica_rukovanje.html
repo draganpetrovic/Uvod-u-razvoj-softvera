@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Logika.polica_rukovanje &#8212; Dokumentacija za projekat iz predmeta URS 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dokumentacija za projekat iz predmeta URS 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for Logika.polica_rukovanje</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">Logika.entiteti_rukovanje</span> <span class="k">import</span> <span class="n">EntitetiRukovanje</span>
+<span class="kn">from</span> <span class="nn">Entiteti.polica</span> <span class="k">import</span> <span class="n">Polica</span>
+
+
+<div class="viewcode-block" id="Polica_rukovanje"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje">[docs]</a><span class="k">class</span> <span class="nc">Polica_rukovanje</span><span class="p">(</span><span class="n">EntitetiRukovanje</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Klasa za rukovanje policama prosledjujemo putanju do fajla&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">putanja</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">putanja</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Polica_rukovanje.citanje_svih"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.citanje_svih">[docs]</a>    <span class="k">def</span> <span class="nf">citanje_svih</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Citanje svih entiteta iz fajla&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">podaci</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">linija</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+                <span class="n">podaci</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">napravi_entitet</span><span class="p">(</span><span class="n">linija</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">podaci</span></div>
+            
+<div class="viewcode-block" id="Polica_rukovanje.napravi_entitet"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.napravi_entitet">[docs]</a>    <span class="k">def</span> <span class="nf">napravi_entitet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linija</span><span class="p">):</span>
+        <span class="s2">&quot;Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije&quot;</span>
+        <span class="n">polje</span> <span class="o">=</span> <span class="n">linija</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Polica</span><span class="p">(</span><span class="n">polje</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">polje</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">polje</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.upis_jednog"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.upis_jednog">[docs]</a>    <span class="k">def</span> <span class="nf">upis_jednog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entitet</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Metoda za upis novog entiteta&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">entitet</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.izmjena_jednog"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.izmjena_jednog">[docs]</a>    <span class="k">def</span> <span class="nf">izmjena_jednog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entitet</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Metoda za izmjenu odredjenog entiteta sa podacima novog entiteta&quot;&quot;&quot;</span>
+        <span class="n">entiteti</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">citanje_svih</span><span class="p">()</span>
+        <span class="n">pronasao</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">entiteti</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">entiteti</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">oznaka</span> <span class="o">==</span> <span class="n">entitet</span><span class="o">.</span><span class="n">oznaka</span><span class="p">:</span>
+                <span class="n">entiteti</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">entiteti</span><span class="p">):</span>
+                    <span class="n">entiteti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entitet</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">entiteti</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">entitet</span><span class="p">)</span>
+                <span class="n">pronasao</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">putanja</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entitet</span> <span class="ow">in</span> <span class="n">entiteti</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">entitet</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">pronasao</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_oznaci"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_oznaci">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_oznaci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">rijec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po oznaci&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">oznaka</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">rijec</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_redu"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_redu">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_redu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po redu&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">red</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_koloni"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_koloni">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_koloni</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po koloni&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">kolona</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_poziciji"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_poziciji">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_poziciji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">rijec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po poziciji&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">pozicija</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">rijec</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+    
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_duzini"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_duzini">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_duzini</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po duzini&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">duzina</span><span class="p">)</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_sirini"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_sirini">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_sirini</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po sirini&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">sirina</span><span class="p">)</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+    
+<div class="viewcode-block" id="Polica_rukovanje.pretraga_po_visini"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.pretraga_po_visini">[docs]</a>    <span class="k">def</span> <span class="nf">pretraga_po_visini</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">broj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pretraga entiteta po visini&quot;&quot;&quot;</span>
+        <span class="n">pretrazeno</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">visina</span><span class="p">)</span> <span class="o">==</span> <span class="n">broj</span><span class="p">:</span>
+                <span class="n">pretrazeno</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pretrazeno</span></div>
+
+<div class="viewcode-block" id="Polica_rukovanje.sortiranje_po_poziciji"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.sortiranje_po_poziciji">[docs]</a>    <span class="k">def</span> <span class="nf">sortiranje_po_poziciji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">smjer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;Sortiranje entiteta po poziciji, prosledjujemo listu za sortiranje i smjer&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">najmanji</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">smjer</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">lst</span><span class="p">[</span><span class="n">najmanji</span><span class="p">]</span><span class="o">.</span><span class="n">pozicija</span> <span class="o">&gt;</span> <span class="n">lst</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pozicija</span><span class="p">:</span>
+                        <span class="n">najmanji</span> <span class="o">=</span> <span class="n">j</span>
+                <span class="k">elif</span> <span class="n">smjer</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">lst</span><span class="p">[</span><span class="n">najmanji</span><span class="p">]</span><span class="o">.</span><span class="n">pozicija</span> <span class="o">&lt;</span> <span class="n">lst</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pozicija</span><span class="p">:</span>
+                        <span class="n">najmanji</span> <span class="o">=</span> <span class="n">j</span>
+                <span class="n">skladiste</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">najmanji</span><span class="p">]</span>        
+                <span class="n">lst</span><span class="p">[</span><span class="n">najmanji</span><span class="p">]</span> <span class="o">=</span> <span class="n">skladiste</span>
+        <span class="k">return</span> <span class="n">lst</span></div>
+
+
+<div class="viewcode-block" id="Polica_rukovanje.izlistaj_artikle"><a class="viewcode-back" href="../../fajlovi/polica.html#Logika.polica_rukovanje.Polica_rukovanje.izlistaj_artikle">[docs]</a>    <span class="k">def</span> <span class="nf">izlistaj_artikle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polica</span><span class="p">,</span> <span class="n">lista_artikala</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Prikazivanje svih artikala na odredjenoj polici&quot;&quot;&quot;</span>
+        <span class="n">artikli_na_polici</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lista_artikala</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">polica</span> <span class="o">==</span> <span class="n">polica</span><span class="p">:</span>
+                <span class="n">artikli_na_polici</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">artikli_na_polici</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Dokumentacija za projekat iz predmeta URS 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Tim07.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
