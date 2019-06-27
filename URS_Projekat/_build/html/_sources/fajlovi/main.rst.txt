@@ -1,0 +1,9 @@
+Main
+========================
+
+**Klasa main**
+
+.. automodule:: src.main
+   :members:
+
+:doc:`index strana <../index>`

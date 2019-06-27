@@ -17,6 +17,7 @@ Welcome to Dokumentacija za projekat iz predmeta URS's documentation!
    fajlovi/polica
    fajlovi/sekcija
    fajlovi/stavka
+   fajlovi/main
 
 
 Indices and tables

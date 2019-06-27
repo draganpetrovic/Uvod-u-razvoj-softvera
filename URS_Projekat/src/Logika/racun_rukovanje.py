@@ -143,6 +143,7 @@ class Racun_rukovanje(EntitetiRukovanje):
             return lst
         elif smjer == "-":
             lst.sort(key=Racun_rukovanje.kljuc2)
+            return lst
         else:
             print("Pogresan unos!")
 

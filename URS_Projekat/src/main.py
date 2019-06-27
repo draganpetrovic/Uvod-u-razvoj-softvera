@@ -37,7 +37,7 @@ if __name__ == "__main__":
                 print("6 -> Prikaz artikala na polici")
                 print("7 -> Nazad")
                 print("---------------------------------")
-                opt = int(input("Izaberite neku od opcija"))
+                opt = int(input("Izaberite neku od opcija: "))
 
                 if opt == 1:
                     police = Polica_rukovanje("Upisi/police.txt")
@@ -196,7 +196,7 @@ if __name__ == "__main__":
                 print("4 -> Pretraga sekcija")
                 print("5 -> Vidi sve police i artikle u sekciji")
                 print("6 -> Nazad")
-                opt = int(input("Izaberi neku od opcija"))
+                opt = int(input("Izaberi neku od opcija: "))
 
                 if opt == 1:
                     s = Sekcija_rukovanje("Upisi/sekcije.txt")
@@ -206,10 +206,10 @@ if __name__ == "__main__":
 
                 elif opt == 2:
                     s = Sekcija_rukovanje("Upisi/sekcije.txt")
-                    oznaka = str(input("Unesite oznaku sekcije koju mijenjate: "))
-                    naziv = str(input("Unesite naziv sekcije"))
-                    opis = str(input("Unesite opis sekcije"))
-                    pozicija = str(input("Unesite poziciju usekcije"))
+                    oznaka = str(input("Unesite oznaku sekcije koju dodajete: "))
+                    naziv = str(input("Unesite naziv sekcije: "))
+                    opis = str(input("Unesite opis sekcije: "))
+                    pozicija = str(input("Unesite poziciju usekcije: "))
                     sekcija = Sekcija(oznaka, naziv, opis, pozicija)
                     s.upis_jednog(sekcija)
                 
@@ -324,7 +324,7 @@ if __name__ == "__main__":
                 print("4 -> Pretraga artikala")
                 print("5 -> Sortiranje artikala")
                 print("6 -> Nazad")
-                opt = int(input("Izaberi neku od opcija"))
+                opt = int(input("Izaberi neku od opcija: "))
 
                 if opt == 1:
                     print("Meni ucitaj artikle")
@@ -374,14 +374,6 @@ if __name__ == "__main__":
                     print("5 -> Pretraga po roku trajanja")
                     opt_pretraga = int(input("Unesite pretragu: "))
 
-                    if opt_pretraga == 1:
-                        a = Artikal_rukovanje("Upisi/artikli.txt")
-                        lista_artikala= a.citanje_svih()
-                        oznaka_za_pretragu = input("Unesite oznaku artikla za pretragu: ")
-                        pretrazeno = a.pretraga_po_oznaci(lista_artikala, oznaka_za_pretragu)
-                        for i in pretrazeno:
-                            print(i)
-                    
                     if opt_pretraga == 1:
                         a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
