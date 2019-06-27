@@ -24,9 +24,9 @@ class Racun_rukovanje(EntitetiRukovanje):
     def napravi_entitet(self, linija):
         
         '''Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije'''
-        
+       
         polje = linija.strip().split(";")
-        return Racun(polje[0], polje[1], polje[2], polje[3])
+        return Racun(polje[0], polje[1], float(polje[2]), polje[3])
 
     def upis_jednog(self, entitet):
         
