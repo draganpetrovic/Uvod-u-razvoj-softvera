@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
                 elif opt == 2:
                     s = Sekcija_rukovanje("Upisi/sekcije.txt")
-                    oznaka = str(input("Unesite oznaku sekcije koju mijenjate: "))
+                    oznaka = str(input("Unesite oznaku sekcije koju dodajete: "))
                     naziv = str(input("Unesite naziv sekcije: "))
                     opis = str(input("Unesite opis sekcije: "))
                     pozicija = str(input("Unesite poziciju usekcije: "))
