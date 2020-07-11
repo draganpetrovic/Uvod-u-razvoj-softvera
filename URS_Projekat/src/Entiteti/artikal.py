@@ -3,13 +3,13 @@ from Entiteti.identifikacija import Identifikacija
 class Artikal(Identifikacija):
     """Klasa artikal, nasledjuje klasu Identifikacija"""
     
-    def __init__(self, oznaka, naziv, opis, cijena, rok_trajanja, polica):
+    def __init__(self, oznaka, naziv, opis, rok_trajanja, polica, cijena):
         super().__init__(oznaka)
         self.naziv = naziv
         self.opis = opis
-        self.cijena = float(cijena)
         self.rok_trajanja = rok_trajanja
         self.polica = polica
+        self.cijena = float(cijena)
 
     
     def __str__(self):

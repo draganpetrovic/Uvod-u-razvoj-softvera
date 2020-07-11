@@ -20,7 +20,7 @@ class Artikal_rukovanje(EntitetiRukovanje):
     def napravi_entitet(self,linija):
         '''Metoda za pravljenje novog entiteta u formatu sa ; delimiterom iz __str__ funkcije'''
         polje = linija.strip().split(";")
-        return Artikal(polje[0], polje[1], polje[2], polje[3], polje[4], polje[5])
+        return Artikal(polje[0], polje[1], polje[2], polje[4], polje[5], polje[3])
 
 
 

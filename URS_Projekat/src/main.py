@@ -180,6 +180,9 @@ if __name__ == "__main__":
                     artikli_u_polici = p.izlistaj_artikle(id_police, lista_artikala)
                     for i in artikli_u_polici:
                         print(i)
+                        
+                elif opt == 7:
+                    opcija = ''
                 
                 while opt < 1 or opt > 7:
                     opt = int(input("Iaberite neku od postojecih opcija!: "))
@@ -307,7 +310,8 @@ if __name__ == "__main__":
                             print(i)
 
 
-
+                elif opt == 6:
+                    opcija = ''
 
 
                 while opt < 1 or opt > 6:
@@ -399,7 +403,7 @@ if __name__ == "__main__":
                     elif opt_pretraga == 4:
                         a = Artikal_rukovanje("Upisi/artikli.txt")
                         lista_artikala= a.citanje_svih()
-                        cijena_za_pretragu = input("Unesite cijenu artikla za pretragu: ")
+                        cijena_za_pretragu = float(input("Unesite cijenu artikla za pretragu: "))
                         pretrazeno = a.pretraga_po_cijeni(lista_artikala, cijena_za_pretragu)
                         for i in pretrazeno:
                             print(i)
@@ -433,6 +437,9 @@ if __name__ == "__main__":
                         sortirano = a.sortiranje_po_roku_trajanja(lista_artikala, smjer)
                         for i in sortirano:
                             print(i)
+                
+                elif opt == 6:
+                    opcija = ''
 
                 while opt < 1 or opt > 6:
                     opt = int(input("Izaberite neku od postojecih opcija"))
@@ -549,9 +556,14 @@ if __name__ == "__main__":
                             print(i)
                     except TypeError:
                         print('')
-
                         
-                        
+                elif opt == '6':
+                    opcija = ''
+                    
+                
+                    
+                    
+                
                         
                 
 
@@ -589,6 +601,7 @@ if __name__ == "__main__":
                         r.upis_jednog(racun)
                     except ValueError:
                         print("Neispravni unosi, pokusajte ponovo!")
+                    opt = ''
 
                 elif opt == '3':
                     r = Racun_rukovanje("Upisi/racuni.txt")
@@ -646,7 +659,7 @@ if __name__ == "__main__":
                     elif opt_pretraga == '3':
                         r = Racun_rukovanje("Upisi/racuni.txt")
                         lista_racuna= r.citanje_svih()
-                        ukupna_cijena_za_pretragu = input("Unesite ukupnu cenu racuna za pretragu: ")
+                        ukupna_cijena_za_pretragu = float(input("Unesite ukupnu cenu racuna za pretragu: "))
                         print("")
                         pretrazeno = r.pretraga_po_ukupnoj_cijeni(lista_racuna, ukupna_cijena_za_pretragu)
                         if not pretrazeno:
@@ -729,8 +742,12 @@ if __name__ == "__main__":
                     for i in stavke_i_artikli:
                         print("stavka" + str(i["stavka"]) + ", artikal" + str(i["artikal"]))
                         print("")
+                        opt = ''
                     
-                    
+        
+                elif opt == '7':
+                    opcija = ''
+                        
         elif opcija == "6":               
             print("Dovidjenja!")
             exit()

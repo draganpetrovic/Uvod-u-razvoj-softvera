@@ -5,3 +5,4 @@
 5;feri;sredstvo za ciscenje;200.0;12.12.2020;2
 6;spuzvica vileda;za sudje;120.0;10.10.2012;2
 7;cips;paprika;60.0;06.09.2019;3
+9;jabuka;crvena;20.0;20.20.2019;9
